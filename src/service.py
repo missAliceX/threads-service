@@ -14,9 +14,8 @@ class Service(ThreadsServiceServicer, GRPCService):
         super().__init__("threads-service", add_ThreadsServiceServicer_to_server)
 
         # Sets up the connection to the database, add tables and types if necessary
-        PostgresClient.setup(cfg)
         PostgresClient.migrate('up')
-        PostgresClient.connect()
+        PostgresClient.connect(cfg)
 
     def UpdateThreads(self, req: UpdateThreadsRequest):
         """
