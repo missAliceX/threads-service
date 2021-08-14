@@ -1,3 +1,4 @@
+import grpc
 from sanic import Sanic
 from sanic.log import logger as log
 from src import repo
@@ -17,20 +18,20 @@ class Service(ThreadsServiceServicer, GRPCService):
         PostgresClient.connect(cfg)
         PostgresClient.migrate('up')
 
-    def UpdateThreads(self, req: UpdateThreadsRequest):
+    def UpdateThreads(self, req: UpdateThreadsRequest, ctx: grpc.RpcContext):
         """
         UpdateThreads adds a new thread for the given project.
         """
         repo.update_threads(req.project_id, req.threads)
         return UpdateThreadsResponse()
 
-    def GetProjectThreads(self, req: GetProjectThreadsRequest):
+    def GetProjectThreads(self, req: GetProjectThreadsRequest, ctx: grpc.RpcContext):
         """
         GetProjectThreads retrieves threads for the given project.
         """
         pass
 
-    def GetSubThreads(self, req: GetSubThreadsRequest):
+    def GetSubThreads(self, req: GetSubThreadsRequest, ctx: grpc.RpcContext):
         """
         GetSubThreads gets threads related to the given thread.
         """
