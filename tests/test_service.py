@@ -1,5 +1,6 @@
 import mock
 import random
+import grpc
 from src import service
 from tests import ServiceTestCase
 from pylib.proto.threads_pb2 import Thread, ThreadType, UpdateThreadsRequest
@@ -27,7 +28,7 @@ class TestThreadsService(ServiceTestCase):
         svc.UpdateThreads(UpdateThreadsRequest(
             project_id=project_id,
             threads=threads,
-        ))
+        ), None), 
         
         # Asserts that it called update_threads() with appropriate parameters
         actual_project_id, actual_threads = update_threads.call_args_list[0][0]
