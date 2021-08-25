@@ -11,13 +11,6 @@ def get_threads(project_id: int, thread_type: ThreadType, limit: int):
     pass
 
 
-def get_sub_threads(project_id: int, thread_id: int):
-    """
-    get_sub_threads retrieves sub-threads for a given thread id.
-    """
-    pass
-
-
 def update_threads(project_id: int, threads: List[Thread]):
     """
     update_threads inserts a list of threads into the threads table.

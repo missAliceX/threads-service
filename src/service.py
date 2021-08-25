@@ -5,7 +5,7 @@ from src import repo
 
 from pylib.service.grpc import GRPCService
 from pylib.postgres import PostgresClient
-from pylib.proto.threads_pb2 import UpdateThreadsRequest, UpdateThreadsResponse, GetProjectThreadsRequest, GetSubThreadsRequest
+from pylib.proto.threads_pb2 import UpdateThreadsRequest, UpdateThreadsResponse, GetProjectThreadsRequest
 from pylib.proto.threads_pb2_grpc import ThreadsServiceServicer, add_ThreadsServiceServicer_to_server
 
 
@@ -30,10 +30,3 @@ class Service(ThreadsServiceServicer, GRPCService):
         GetProjectThreads retrieves threads for the given project.
         """
         pass
-
-    def GetSubThreads(self, req: GetSubThreadsRequest, ctx: grpc.RpcContext):
-        """
-        GetSubThreads gets threads related to the given thread.
-        """
-        pass
-
